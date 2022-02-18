@@ -25,30 +25,49 @@ import pygame, sys
 import utils.ColorFormat as ColorFormat
 from pygame.locals import *
 from menu.Menu import Menu
+from utils.Cursor import Cursor
+from ui.CreditsUI import CreditsUI
+from ui.FPS import FPS
 
 class Main:
 
 	def __init__(self):
 		pygame.init()
 
-		self.windowx = 1366
-		self.windowy = 768
-		self.window = pygame.display.set_mode((self.windowx, self.windowy), FULLSCREEN, 32)
+		pygame.mouse.set_visible(False)
+
+		self.cursor = Cursor(self)
+		self.mousex, self.mousey = pygame.mouse.get_pos()
+		self.click = False
+
+		self.fps_max = 60
+		self.clock = pygame.time.Clock()
+
+		self.windowx = 1024
+		self.windowy = 628
+		self.window = pygame.display.set_mode((self.windowx, self.windowy), 0, 32)
 		pygame.display.set_caption('Magara Jam 4 Client')
 
 		self.basicFont = pygame.font.SysFont(None, 48)
 
-		menu = Menu(self)
+		self.menu = Menu(self)
 
 		pygame.display.update()
 
 		while True:
-			menu.initMenu()
+			self.menu.initMenu()
+			self.fps_ui = FPS(self, self.clock.get_fps())
+			self.cursor.initCursor()
+			self.click = False
 			for event in pygame.event.get():
 				if event.type == QUIT:
 					pygame.quit()
 					sys.exit()
+				if event.type == MOUSEBUTTONDOWN:
+					if event.button == 1:
+						self.click = True
 			pygame.display.update()
+			self.clock.tick(self.fps_max)
 
 def main():
 	main = Main()

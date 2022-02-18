@@ -19,12 +19,17 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFT
+SOFTWARE.
 """
-BLACK = (0,0,0)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,0,255)
-YELLOW = (255,255,0)
-GRAY = (200,200,200)
-WHITE = (255,255,255)
+import pygame
+class Cursor:
+
+	def __init__(self, main, default_state = "cursor_default.png"):
+		self.main = main
+		self.default_cursor_dir = "assets/cursors/"
+		self.default_state = default_state
+		self.current_state = self.default_state
+
+	def initCursor(self):
+		self.cursor = pygame.image.load(self.default_cursor_dir + self.current_state)
+		self.main.window.blit(self.cursor, pygame.mouse.get_pos())

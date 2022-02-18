@@ -19,12 +19,15 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFT
+SOFTWARE.
 """
-BLACK = (0,0,0)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,0,255)
-YELLOW = (255,255,0)
-GRAY = (200,200,200)
-WHITE = (255,255,255)
+import pygame
+import utils.ColorFormat as ColorFormat
+
+class FPS:
+
+	def __init__(self, main, fps):
+		self.main = main
+		self.text = self.main.basicFont.render('FPS ' + str(int(fps)), True, ColorFormat.WHITE)
+		self.text_rect = self.text.get_rect()
+		self.main.window.blit(self.text, self.text_rect)

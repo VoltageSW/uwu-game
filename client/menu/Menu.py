@@ -23,6 +23,10 @@ SOFTWARE.
 """
 import utils.ColorFormat as ColorFormat
 from image.Image import Image
+from menu.MenuText import MenuText
+import pygame
+from menu.actions.ExitAction import ExitAction
+
 class Menu:
 
 	def __init__(self, main):
@@ -35,7 +39,52 @@ class Menu:
 		self.main.window.blit(background.img, (background.img_pos[0], background.img_pos[1]))
 
 		self.title = "MAGARA JAM 4"
-		title_text = self.main.basicFont.render(self.title, True, ColorFormat.GREEN, ColorFormat.BLUE)
+		title_font = pygame.font.SysFont(None, 60, True, True)
+		title_text = title_font.render(self.title, True, ColorFormat.YELLOW)
 		title_rect = title_text.get_rect()
-		title_rect.center = (self.main.windowx // 2, self.main.windowy // 2)
+		title_rect.x = 30
+		title_rect.y = self.main.windowy // 2
 		self.main.window.blit(title_text, title_rect)
+
+		singleplayer_btn = MenuText(
+			self.main,
+			self.main.basicFont,
+			"Singleplayer",
+			True,
+			ColorFormat.WHITE,
+			(30, (self.main.windowy // 2) + 50),
+		)
+		multiplayer_btn = MenuText(
+			self.main,
+			self.main.basicFont,
+			"Multiplayer",
+			True,
+			ColorFormat.GRAY,
+			(30, (self.main.windowy // 2) + 85),
+			None,
+			False
+		)
+		credits_btn = MenuText(
+			self.main,
+			self.main.basicFont,
+			"Credits",
+			True,
+			ColorFormat.WHITE,
+			(30, (self.main.windowy // 2) + 115),
+		)
+		exit_btn = MenuText(
+			self.main,
+			self.main.basicFont,
+			"Exit",
+			True,
+			ColorFormat.WHITE,
+			(30, (self.main.windowy // 2) + 145),
+			None,
+			True,
+			ExitAction()
+		)
+
+		singleplayer_btn.initText()
+		multiplayer_btn.initText()
+		credits_btn.initText()
+		exit_btn.initText()
