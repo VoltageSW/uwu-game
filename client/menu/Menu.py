@@ -19,10 +19,17 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFT
+SOFTWARE.
 """
-BLACK = (0,0,0)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,0,255)
-WHITE = (255,255,255)
+import utils.ColorFormat as ColorFormat
+class Menu:
+
+	def __init__(self, main):
+		self.main = main
+
+	def initMenu(self):
+		self.title = "MAGARA JAM 4"
+		title_text = self.main.basicFont.render(self.title, True, ColorFormat.GREEN, ColorFormat.BLUE)
+		title_rect = title_text.get_rect()
+		title_rect.center = (self.main.windowx // 2, self.main.windowy // 2)
+		self.main.window.blit(title_text, title_rect)
