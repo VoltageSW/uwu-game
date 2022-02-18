@@ -22,12 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import utils.ColorFormat as ColorFormat
+from image.Image import Image
 class Menu:
 
 	def __init__(self, main):
 		self.main = main
 
 	def initMenu(self):
+		# Background Image
+		background = Image("background_menu.png", (0, 0))
+		background.setScale((self.main.windowx, self.main.windowy))
+		self.main.window.blit(background.img, (background.img_pos[0], background.img_pos[1]))
+
 		self.title = "MAGARA JAM 4"
 		title_text = self.main.basicFont.render(self.title, True, ColorFormat.GREEN, ColorFormat.BLUE)
 		title_rect = title_text.get_rect()

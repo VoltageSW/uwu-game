@@ -21,37 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import pygame, sys
-import utils.ColorFormat as ColorFormat
-from pygame.locals import *
-from menu.Menu import Menu
+import pygame
+class Image:
 
-class Main:
+	def __init__(self, image, image_pos):
+		self.default_dir = "assets/";
+		self.img = pygame.image.load(self.default_dir + image)
+		self.img_pos = image_pos
 
-	def __init__(self):
-		pygame.init()
-
-		self.windowx = 1366
-		self.windowy = 768
-		self.window = pygame.display.set_mode((self.windowx, self.windowy), FULLSCREEN, 32)
-		pygame.display.set_caption('Magara Jam 4 Client')
-
-		self.basicFont = pygame.font.SysFont(None, 48)
-
-		menu = Menu(self)
-
-		pygame.display.update()
-
-		while True:
-			menu.initMenu()
-			for event in pygame.event.get():
-				if event.type == QUIT:
-					pygame.quit()
-					sys.exit()
-			pygame.display.update()
-
-def main():
-	main = Main()
-
-if __name__ == '__main__':
-	main()
+	def setScale(self, scale):
+		self.img = pygame.transform.scale(self.img, scale)
