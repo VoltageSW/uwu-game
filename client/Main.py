@@ -28,6 +28,7 @@ from menu.Menu import Menu
 from utils.Cursor import Cursor
 from ui.CreditsUI import CreditsUI
 from ui.FPS import FPS
+from particle.Particle import Particle
 
 class Main:
 
@@ -54,9 +55,13 @@ class Main:
 
 		pygame.display.update()
 
+		self.particle = Particle(self, pygame.mouse.get_pos())
+
 		while True:
+			self.window.fill(ColorFormat.BLACK)
 			self.menu.initMenu()
 			self.fps_ui = FPS(self, self.clock.get_fps())
+			self.particle.spawnParticles()
 			self.cursor.initCursor()
 			self.click = False
 			for event in pygame.event.get():
