@@ -21,13 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import pygame
-import utils.ColorFormat as ColorFormat
-class UI:
+import pygame, sys
+
+class CreditsAction:
 
 	def __init__(self, main):
 		self.main = main
-		self.rect = pygame.Rect(30, 30, 60, 60)
 
-	def initUI(self):
-		pygame.draw.rect(self.main.window, ColorFormat.GRAY, self.rect)
+	def doAction(self):
+		self.main.credits_ui.run()

@@ -26,7 +26,7 @@ class Image:
 
 	def __init__(self, image, image_pos):
 		self.default_dir = "assets/";
-		self.img = pygame.image.load(self.default_dir + image)
+		self.img = pygame.image.load(self.default_dir + image).convert()
 		self.img_pos = image_pos
 
 	def setScale(self, scale):

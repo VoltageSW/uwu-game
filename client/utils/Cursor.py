@@ -32,4 +32,5 @@ class Cursor:
 
 	def initCursor(self):
 		self.cursor = pygame.image.load(self.default_cursor_dir + self.current_state)
+		self.cursor = pygame.transform.scale(self.cursor, (15, 15))
 		self.main.window.blit(self.cursor, pygame.mouse.get_pos())

@@ -21,22 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import pygame,random
+from image.Image import Image
+import pygame
 
-class Particle:
+class CharacterImage(Image):
 
-	def __init__(self, main, to_pos):
-		self.main = main
-		self.to_pos = to_pos
-		self.particles = []
-
-	def spawnParticles(self):
-		self.to_pos = pygame.mouse.get_pos()
-		self.particles.append([[self.to_pos[0] + 7, self.to_pos[1] + 7], [random.randint(-20, 20) / 10, random.randint(0,20) / 5], 7])
-		for particle in self.particles:
-			particle[0][0] += particle[1][0]
-			particle[0][1] += particle[1][1]
-			particle[2] -= 0.2
-			rect = pygame.draw.circle(self.main.window, (255,255,255), (particle[0][0], particle[0][1]), particle[2])
-			if particle[2] <= 0:
-				self.particles.remove(particle)
+	def __init__(self, image, image_pos):
+		self.default_dir = "assets/characters/"
+		self.img = pygame.image.load(self.default_dir + image)
+		self.img_pos = image_pos
+		self.setScale((32, 32))
