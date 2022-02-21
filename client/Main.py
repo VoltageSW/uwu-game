@@ -67,7 +67,7 @@ class Main:
 
 		self.mouse_particle = Particle(self, pygame.mouse.get_pos())
 
-		self.background = Image("background1.png", (0,0))
+		self.background = Image("backgrounds/background1.png", (0,0))
 		self.background.setScale(self.DISPLAY_SIZE)
 
 		self.character = UwU(self)

@@ -35,23 +35,8 @@ class TileLoader:
             x = 0
             for each in line:
                 if each == "1":
-                    image = Image("zemin/zemin.png", (x * 32, y * 32))
+                    image = Image("objects/wall_without_borders.png", (x * 32, y * 32))
                     rect = pygame.Rect(x * 32, y * 32, 32, 32)
-                if each == "2":
-                    image = Image("duvar/duvar.png", (x * 32, y * 32))
-                    rect =  pygame.Rect(x * 32, y * 32, 32, 32)
-                if each == "3":
-                    image = Image("duvar/sadecesagvar.png", (x * 32, y * 32))
-                    rect =  pygame.Rect(x * 32, y * 32, 32, 32)
-                if each == "4":
-                    image = Image("duvar/sadecesolvar.png", (x * 32, y * 32))
-                    rect =  pygame.Rect(x * 32, y * 32, 32, 32)
-                if each == "5":
-                    image = Image("duvar/sagveustyok.png", (x * 32, y * 32))
-                    rect =  pygame.Rect(x * 32, y * 32, 32, 32)
-                if each == "6":
-                    image = Image("duvar/solveustyok.png", (x * 32, y * 32))
-                    rect =  pygame.Rect(x * 32, y * 32, 32, 32)
                 if each != "#" and each != "0":
                     self.main.tile_rects.append(rect)
                     if self.main.checkCollide(self.main.character.rect, rect):
