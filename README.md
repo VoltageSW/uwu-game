@@ -1,2 +1,2 @@
-# magarajam-4-game
-A game for Magara Jam 4 made by us.
+# uwu-game
+A perfect game in python/pygame.
